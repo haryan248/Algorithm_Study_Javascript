@@ -6,7 +6,6 @@ for (let i = 1; i <= input[0]; i++) {
     temp = input[i].split(" ").map((item) => +item);
     testcaseArray.push(temp);
 }
-console.log(testcaseArray);
 let rank = new Array(testcaseArray.length).fill(0);
 for (let i = 0; i < testcaseArray.length; i++) {
     for (let j = 0; j < testcaseArray.length; j++) {
