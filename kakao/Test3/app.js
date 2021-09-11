@@ -30,6 +30,7 @@ function solution(fees, records) {
     Object.keys(vehicle_per_time).sort();
     return Object.values(vehicle_per_time);
 }
+// 시간 계산
 function cal_time(vehicle_arr, vehicle_num) {
     let sum = 0;
     let out_list = [];

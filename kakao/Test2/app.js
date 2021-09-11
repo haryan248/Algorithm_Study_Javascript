@@ -1,6 +1,7 @@
 function solution(n, k) {
     var answer = 0;
     let format_n;
+    // 진수 변환
     format_n = n.toString(k);
     format_n.split("0").forEach((element) => {
         if (element !== "" && isPrime(Number(element))) {
@@ -9,6 +10,7 @@ function solution(n, k) {
     });
     return answer;
 }
+// 소수 확인
 function isPrime(n) {
     if (n <= 1) {
         return false;
@@ -33,7 +35,6 @@ function isPrime(n) {
 n = 1000000;
 k = 5;
 console.log(solution(n, k));
-console.log(isPrime(121221));
 // 1. 10진수 -> 2진수
 
 // 0P0처럼 소수 양 쪽에 0이 있는 경우

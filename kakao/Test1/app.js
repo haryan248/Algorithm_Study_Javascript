@@ -1,6 +1,9 @@
 function solution(id_list, report, k) {
     var answer = [];
     let result = {};
+    let ban_list = {};
+    let user_report = {};
+
     for (let i = 0; i < report.length; i++) {
         let reporter = report[i].split(" ")[0].trim();
         let banUser = report[i].split(" ")[1].trim();
@@ -12,7 +15,6 @@ function solution(id_list, report, k) {
             result[reporter] = [...mySet2];
         }
     }
-    let ban_list = {};
 
     for (let i = 0; i < id_list.length; i++) {
         if (result[id_list[i]] !== undefined) {
@@ -25,8 +27,6 @@ function solution(id_list, report, k) {
             });
         }
     }
-
-    let user_report = {};
 
     for (let item in result) {
         Object.values(result[item]).forEach((x) => {
