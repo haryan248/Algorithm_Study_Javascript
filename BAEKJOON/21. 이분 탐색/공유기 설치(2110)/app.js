@@ -7,6 +7,26 @@ for (let i = 1; i <= n; i++) {
     testcaseArray.push(Number(input[i].trim()));
 }
 testcaseArray.sort((a, b) => a - b);
-console.log(testcaseArray);
-// 1, 2, 4, 8, 9
-// 1,    4, 8
+let start = 1;
+let end = testcaseArray[n - 1] - testcaseArray[0];
+while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    let pick = testcaseArray[0];
+    let count = 1;
+    testcaseArray.forEach((x, i) => {
+        if (i !== 0) {
+            let distance = x - pick;
+            if (distance >= mid) {
+                count++;
+                pick = x;
+            }
+        }
+    });
+    console.log(mid);
+    if (count >= c) {
+        start = mid + 1;
+    } else {
+        end = mid - 1;
+    }
+}
+console.log(end);
