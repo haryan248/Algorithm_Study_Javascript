@@ -7,15 +7,12 @@ function solution(progresses, speeds) {
 
         if (day > beforeCommitDay) {
             answer.push(1);
-            console.log(`1 : answer : ${answer}, day ${day}, beforeCommitDay : ${beforeCommitDay}`);
             beforeCommitDay = day;
         } else {
             // 제일 뒤의 스택에 배포 가능 수 1개 추가
             answer[answer.length - 1]++;
-            console.log(`2 : answer : ${answer}, day ${day}, beforeCommitDay : ${beforeCommitDay}`);
         }
     });
-    console.log(answer);
     return answer;
 }
 progresses = [95, 95, 95, 95];
