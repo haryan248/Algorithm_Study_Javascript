@@ -17,6 +17,7 @@ function bubbleSort(array) {
     return array;
 }
 // console.log(bubbleSort([5, 4, 3, 2, 1]));
+// 시간 복잡도 O(n^2)
 
 // 선택 정렬
 function selectionSort(array) {
@@ -27,6 +28,7 @@ function selectionSort(array) {
                 minIndex = j;
             }
         }
+        // 뒤에서 최소를 선택한다음 맨앞과 swap
         // minIndex <-> i
         if (minIndex !== i) {
             let swap = array[minIndex];
@@ -37,25 +39,30 @@ function selectionSort(array) {
     }
     return array;
 }
-
 // console.log(selectSort([5, 4, 3, 2, 1]));
+// 시간 복잡도 O(n^2)
 
 // 삽입 정렬
-
 function insertionSort(array) {
+    // console.log(`${0}회전: ${array}`);
+
     for (let i = 1; i < array.length; i++) {
         let cur = array[i];
         let left = i - 1;
+        // 현재값(cur) 이 left값보다 작으면 계속 true
         while (left >= 0 && array[left] > cur) {
             array[left + 1] = array[left];
             left--;
+            console.log(i, array);
         }
+        // left + 1는 들어갈 자리
         array[left + 1] = cur;
-        console.log(`${i}회전: ${array}`);
+        console.log(`${i}회전: ${array} left + 1: ${left + 1}, cur :${cur}`);
     }
     return array;
 }
-// console.log(insertionSort([5, 4, 3, 2, 1]));
+// console.log(insertionSort([5, 4, 2, 3, 1]));
+// 최선의 경우는 O(n) 의 시간복잡도를 갖고, 평균과 최악의 경우 O(n^2)
 
 // 퀵 소트
 function quickSort(array, left = 0, right = array.length - 1) {
@@ -89,4 +96,9 @@ function quickSort(array, left = 0, right = array.length - 1) {
     }
     return array;
 }
-console.log(quickSort([1, 12, 5, 26, 7, 14, 3, 7]));
+// console.log(quickSort([1, 12, 5, 26, 7, 14, 3, 7]));
+
+let arry = [1, 2, 3];
+arry.sort((next, now) => {
+    console.log(next, now);
+});
