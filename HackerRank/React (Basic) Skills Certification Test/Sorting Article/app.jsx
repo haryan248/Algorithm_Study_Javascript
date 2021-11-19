@@ -7,20 +7,27 @@ import Articles from "./components/Articles";
 const title = "Sorting Articles";
 
 function App({ articles }) {
-    const [filterArticles, setFilterArticles] = useState(articles);
+    const [articlesList, setArticlesList] = useState(articles.sort((a, b) => b.upvotes - a.upvotes));
 
-    const onFilterUpvoted = () => {
-        let newArticles = [];
-        Object.assign(newArticles, filterArticles);
+    const sortByUpvotes = () => {
+        var newArticles = [];
+        Object.assign(newArticles, articlesList);
         newArticles.sort((a, b) => {
-            return b.upvotes - a.upvotes;
+            if (a.upvotes > b.upvotes) {
+                return -1;
+            }
+            if (a.upvotes < b.upvotes) {
+                return 1;
+            }
+            return 0;
         });
-        setFilterArticles(newArticles);
+
+        setArticlesList(newArticles);
     };
 
-    const onFilterDate = () => {
-        let newArticles = [];
-        Object.assign(newArticles, filterArticles);
+    const sortByDates = () => {
+        var newArticles = [];
+        Object.assign(newArticles, articlesList);
         newArticles.sort((a, b) => {
             const aDate = new Date(a.date);
             const bDate = new Date(b.date);
@@ -32,22 +39,23 @@ function App({ articles }) {
             }
             return 0;
         });
-        setFilterArticles(newArticles);
+
+        setArticlesList(newArticles);
     };
 
     return (
         <div className="App">
-            <h8k-navbar header={title}></h8k-navbar>
+            <h1> {title} </h1>
             <div className="layout-row align-items-center justify-content-center my-20 navigation">
                 <label className="form-hint mb-0 text-uppercase font-weight-light">Sort By</label>
-                <button data-testid="most-upvoted-link" className="small" onClick={() => onFilterUpvoted()}>
+                <button data-testid="most-upvoted-link" className="small" onClick={() => sortByUpvotes()}>
                     Most Upvoted
                 </button>
-                <button data-testid="most-recent-link" className="small" onClick={() => onFilterDate()}>
+                <button data-testid="most-recent-link" className="small" onClick={() => sortByDates()}>
                     Most Recent
                 </button>
             </div>
-            <Articles articles={filterArticles} />
+            <Articles articles={articlesList} />
         </div>
     );
 }
