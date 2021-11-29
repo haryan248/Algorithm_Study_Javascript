@@ -1,10 +1,15 @@
-const number = [121, 486, 496, 512];
+let num = 1;
+let answer = [];
+let k = 4;
+while (true) {
+    if (completeNumber(num) === 2 * num) answer.push(num);
+    num++;
+    if (answer.length === k) {
+        break;
+    }
+}
 
-number.forEach((i) => {
-    if (completeNumber(i) === 2 * i) {
-        console.log("완전수입니다.");
-    } else console.log("완전수가 아닙니다.");
-});
+console.log(`${k}번째로 큰 완전수는 ${answer[answer.length - 1]}`);
 
 function completeNumber(num) {
     let answer = [];
